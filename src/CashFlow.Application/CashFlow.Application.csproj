@@ -12,4 +12,8 @@
     <ProjectReference Include="..\CashFlow.Exception\CashFlow.Exception.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCase\Expenses\Register\" />
+  </ItemGroup>
+
 </Project>
