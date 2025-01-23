@@ -3,9 +3,9 @@ using CashFlow.Communication.Enum;
 using CashFlow.Communication.Requests;
 
 namespace CommonTestUtilities.Requests;
-public class RequestRegisterexpenseJsonBuilder
+public  class RequestRegisterexpenseJsonBuilder
 {
-    public RequestRegisterexpenseJson Build()
+    public static RequestRegisterexpenseJson Build()
     {
 
         return new Faker<RequestRegisterexpenseJson>()
