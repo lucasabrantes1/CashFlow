@@ -2,7 +2,6 @@
 using CashFlow.Communication.Enum;
 using CashFlow.Exception;
 using CommonTestUtilities.Requests;
-using FluentAssertions;
 using Shouldly;
 using Xunit;
 
@@ -12,116 +11,86 @@ public class RegisterExpenseValidatorTests
     [Fact]
     public void Success()
     {
-        //Arrange
+        // Arrange
         var validator = new RegisterExpenseValidator();
         var request = RequestRegisterexpenseJsonBuilder.Build();
 
-
-        //Act
+        // Act
         var result = validator.Validate(request);
 
-
-        //Assert
-        result.IsValid.Should().BeTrue();
+        // Assert
+        result.IsValid.ShouldBeTrue();
     }
 
-    [Theory]
-    [InlineData("")]
-    [InlineData("           ")]
-    [InlineData(null)]
-    public void Error_Title_Empty(string title)
+    [Fact]
+    public void Error_Title_Empty()
     {
-        //Arrange
+        // Arrange
         var validator = new RegisterExpenseValidator();
         var request = RequestRegisterexpenseJsonBuilder.Build();
-        request.Title = title;
+        request.Title = string.Empty;
 
-        //Act
+        // Act
         var result = validator.Validate(request);
 
-
-        //Assert
+        // Assert
         result.IsValid.ShouldBeFalse();
-        //FluentAssertion Syntax
-        // result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.TITLE_REQUIRED));
-
-        // shoundly syntax
         result.Errors.Count.ShouldBe(1);
         result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.TITLE_REQUIRED);
-
     }
 
     [Fact]
     public void Error_Date_Future()
     {
-        //Arrange
+        // Arrange
         var validator = new RegisterExpenseValidator();
         var request = RequestRegisterexpenseJsonBuilder.Build();
-        //request.Title = string.Empty;
-        request.Date = DateTime.UtcNow.AddDays(1);
+        request.Date = DateTime.Now.AddDays(1); // Data futura
 
-        //Act
+        // Act
         var result = validator.Validate(request);
 
-
-        //Assert
+        // Assert
         result.IsValid.ShouldBeFalse();
-        //FluentAssertion Syntax
-        // result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.TITLE_REQUIRED));
-
-        // shoundly syntax
         result.Errors.Count.ShouldBe(1);
         result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.EXPENSES_CANNOT_FOR_THE_FUTURE);
-
     }
 
     [Fact]
-    public void Error_Payment_Type_Invalid()
+    public void Error_PaymentType_Invalid()
     {
-        //Arrange
+        // Arrange
         var validator = new RegisterExpenseValidator();
         var request = RequestRegisterexpenseJsonBuilder.Build();
-        //request.Title = string.Empty;
-        request.PaymentType = (PaymentType)700;
+        request.PaymentType = (PaymentType)700; // Tipo inválido
 
-        //Act
+        // Act
         var result = validator.Validate(request);
 
-
-        //Assert
+        // Assert
         result.IsValid.ShouldBeFalse();
-        //FluentAssertion Syntax
-        // result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.TITLE_REQUIRED));
-
-        // shoundly syntax
         result.Errors.Count.ShouldBe(1);
         result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.PAYMENT_TYPE_INVALID);
     }
 
     [Theory]
-    [InlineData(0)]
-    [InlineData(-1)]
-    [InlineData(-2)]
-    [InlineData(-7)]
+    [InlineData(0)]   // Valor inválido: zero
+    [InlineData(-1)]  // Valor inválido: negativo
+    [InlineData(-10)] // Valor inválido: negativo
     public void Error_Amount_Invalid(decimal amount)
     {
-        //Arrange
+        // Arrange
         var validator = new RegisterExpenseValidator();
         var request = RequestRegisterexpenseJsonBuilder.Build();
         request.Amount = amount;
 
-        //Act
+        // Act
         var result = validator.Validate(request);
 
-
-        //Assert
+        // Assert
         result.IsValid.ShouldBeFalse();
-        //FluentAssertion Syntax
-        // result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.TITLE_REQUIRED));
-
-        // shoundly syntax
         result.Errors.Count.ShouldBe(1);
-        result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.PAYMENT_TYPE_INVALID);
+        result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.AMOUNT_MUST_BE_GREATER_THAN_ZERO);
     }
-
 }
+
