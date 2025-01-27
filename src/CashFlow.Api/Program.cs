@@ -1,5 +1,7 @@
 using CashFlow.Api.Filters;
 using CashFlow.Api.Middleware;
+using CashFlow.Domain.Repositories.Expenses;
+using CashFlow.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
+
+builder.Services.AddInfastructure();
 
 var app = builder.Build();
 
