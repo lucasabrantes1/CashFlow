@@ -23,7 +23,6 @@ public static class DependencyInjectionExtension
 
     public static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<CashFlowDbContext>();
 
         var connectionString = configuration.GetConnectionString("Connection");
 
