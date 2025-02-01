@@ -13,12 +13,16 @@ internal class ExpensesRepository : IExpensesRepository
 
     public async Task Add(Expense expense)
     {
-
         await _dbContext.Expenses.AddAsync(expense);
     }
 
     public async Task<List<Expense>> GetAll()
     {
-        return await  _dbContext.Expenses.ToListAsync();
+        return await _dbContext.Expenses.AsNoTracking().ToListAsync();
+    }
+
+    public async Task<Expense?> GetById(long id)
+    {
+        return await _dbContext.Expenses.AsNoTracking().FirstOrDefaultAsync(expense => expense.Id == id);
     }
 }
