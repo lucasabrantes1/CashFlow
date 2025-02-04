@@ -1,23 +1,28 @@
 ﻿using CashFlow.Domain.Reports;
 using ClosedXML.Excel;
 
-namespace CashFlow.Application.UseCases.Expenses.Report.Excel;
-public class GenerateExpenseReportExcelUseCase : IGenerateExpenseReportExcelUseCase
+namespace CashFlow.Application.UseCases.Expenses.Reports.Excel;
+public class GenerateExpensesReportExcelUseCase : IGenerateExpensesReportExcelUseCase
 {
     public async Task<byte[]> Execute(DateOnly month)
     {
         var workbook = new XLWorkbook();
-        workbook.Author = "Lucas Abrantes";
+
+        workbook.Author = "Welisson Arley";
         workbook.Style.Font.FontSize = 12;
         workbook.Style.Font.FontName = "Times New Roman";
 
         var worksheet = workbook.Worksheets.Add(month.ToString("Y"));
 
         InsertHeader(worksheet);
+
+        var file = new MemoryStream();
+        workbook.SaveAs(file);
+
+        return file.ToArray();
     }
 
-
-    public void InsertHeader(IXLWorksheet worksheet)
+    private void InsertHeader(IXLWorksheet worksheet)
     {
         worksheet.Cell("A1").Value = ResourceReportGenerationMessages.TITLE;
         worksheet.Cell("B1").Value = ResourceReportGenerationMessages.DATE;
@@ -32,7 +37,7 @@ public class GenerateExpenseReportExcelUseCase : IGenerateExpenseReportExcelUseC
         worksheet.Cell("A1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
         worksheet.Cell("B1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
         worksheet.Cell("C1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
-        worksheet.Cell("D1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
         worksheet.Cell("E1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+        worksheet.Cell("D1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
     }
 }
