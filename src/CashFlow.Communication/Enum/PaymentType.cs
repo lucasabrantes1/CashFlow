@@ -1,7 +1,7 @@
 ﻿namespace CashFlow.Communication.Enum;
 public enum PaymentType
 {
-    CashFlow = 0,
+    Cash = 0,
     CreditCard = 1,
     DebitCard = 2,
     EletronicTransfer = 3,
