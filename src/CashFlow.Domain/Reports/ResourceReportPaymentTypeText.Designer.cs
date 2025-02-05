@@ -104,14 +104,5 @@ namespace CashFlow.Domain.Reports {
                 return ResourceManager.GetString("EXPENSES_FOR", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Title.
-        /// </summary>
-        public static string TITLE {
-            get {
-                return ResourceManager.GetString("TITLE", resourceCulture);
-            }
-        }
     }
 }

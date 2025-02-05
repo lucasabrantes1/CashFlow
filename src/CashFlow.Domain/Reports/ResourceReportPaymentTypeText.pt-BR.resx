@@ -132,7 +132,4 @@
   <data name="EXPENSES_FOR" xml:space="preserve">
     <value>Despesas para</value>
   </data>
-  <data name="TITLE" xml:space="preserve">
-    <value>Título</value>
-  </data>
 </root>
