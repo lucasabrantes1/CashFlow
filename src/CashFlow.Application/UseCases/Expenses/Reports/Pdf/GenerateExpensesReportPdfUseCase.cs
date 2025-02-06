@@ -1,5 +1,4 @@
-﻿
-using CashFlow.Application.UseCases.Expenses.Reports.Pdf.Fonts;
+﻿using CashFlow.Application.UseCases.Expenses.Reports.Pdf.Fonts;
 using CashFlow.Domain.Reports;
 using CashFlow.Domain.Repositories.Expenses;
 using MigraDoc.DocumentObjectModel;
@@ -30,13 +29,33 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         var document = CreateDocument(month);
         var page = CreatePage(document);
 
+
+        var table = page.AddTable();
+        table.AddColumn();
+        table.AddColumn("300");
+
+        table.AddRow();
+
+        var row = table.AddRow();
+        row.Cells[0].AddImage("C:\\Users\\PC\\Documents\\Documentos2\\65 x 65.png");
+
+        row.Cells[1].AddParagraph("Hey, Lucas Abrantes");
+        row.Cells[1].Format.Font = new Font { Name = FontHelper.RALEWAY_BLACK, Size = 20 };
+        row.Cells[1].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+
+
+
         var paragraph = page.AddParagraph();
+        paragraph.Format.SpaceBefore = "40";
+        paragraph.Format.SpaceAfter = "40";
+
+
+
         var title = string.Format(ResourceReportGenerationMessages.TOTAL_SPENT_IN, month.ToString("Y"));
 
         paragraph.AddFormattedText(title, new Font { Name = FontHelper.RALEWAY_REGULAR, Size = 15 });
 
         paragraph.AddLineBreak();
-
 
         var totalExpense = expenses.Sum(expense => expense.Amount);
         paragraph.AddFormattedText($"{totalExpense} {CURRENCY_SYMBOL}", new Font { Name = FontHelper.WORK_SANS_BLACK, Size = 50 });
