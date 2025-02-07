@@ -131,7 +131,7 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
 
         row.Cells[0].AddImage(pathFile);
 
-        row.Cells[1].AddParagraph("Hey, Welisson Arley");
+        row.Cells[1].AddParagraph("Hey, Lucas Abrantes");
         row.Cells[1].Format.Font = new Font { Name = FontHelper.RALEWAY_BLACK, Size = 16 };
         row.Cells[1].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
     }
