@@ -121,7 +121,7 @@
     <value>O montante deve ser maior que zero</value>
   </data>
   <data name="EMAIL_EMPTY" xml:space="preserve">
-    <value>O e-mail está vazio</value>
+    <value>O e-mail não pode estar vazio</value>
   </data>
   <data name="EMAIL_INVALID" xml:space="preserve">
     <value>o e-mail é inválido</value>
@@ -132,8 +132,11 @@
   <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
     <value>Despesa não encontrada</value>
   </data>
+  <data name="INVALID_PASSWORD" xml:space="preserve">
+    <value>Sua senha deve ter no mínimo 8 caracteres contendo pelo menos uma letra guardada uma letra minúscula um número e um caractere especial (por exemplo, !, ?, *).</value>
+  </data>
   <data name="NAME_EMPTY" xml:space="preserve">
-    <value>O Nome está vazio</value>
+    <value>O Nome não pode estar vazio</value>
   </data>
   <data name="PAYMENT_TYPE_INVALID" xml:space="preserve">
     <value>O tipo de pagamento não é valido</value>

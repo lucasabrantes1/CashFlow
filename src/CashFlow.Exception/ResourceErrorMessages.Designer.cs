@@ -70,7 +70,7 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Email is empty.
+        ///   Looks up a localized string similar to The email cannot be empty.
         /// </summary>
         public static string EMAIL_EMPTY {
             get {
@@ -106,7 +106,16 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The name is empty.
+        ///   Looks up a localized string similar to Your password must be at least 8 characters long, containing at least one letter, one lowercase letter, one number and one special character (for example, !, ?, *)..
+        /// </summary>
+        public static string INVALID_PASSWORD {
+            get {
+                return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name  cannot be empty .
         /// </summary>
         public static string NAME_EMPTY {
             get {
