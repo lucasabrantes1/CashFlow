@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CashFlow.Api.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class UserControlle : ControllerBase
+public class UserController : ControllerBase
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
@@ -15,7 +15,7 @@ public class UserControlle : ControllerBase
     public async Task<IActionResult> Register(
         [FromServices] IRegisterUserUseCase useCase,
         [FromBody] RequestRegisterUserJson request)
-    {
+    { 
         var response = await useCase.Execute(request);
 
         return Created(string.Empty, response);

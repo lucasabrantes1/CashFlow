@@ -16,7 +16,6 @@ public static class DependencyInjectionExtension
     {
         AddAutoMapper(services);
         AddUseCases(services);
-
     }
 
     private static void AddAutoMapper(IServiceCollection services)

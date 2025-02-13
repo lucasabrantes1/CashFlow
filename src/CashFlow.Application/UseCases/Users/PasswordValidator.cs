@@ -7,6 +7,7 @@ namespace CashFlow.Application.UseCases.Users;
 public partial class PasswordValidator<T> : PropertyValidator<T, string>
 {
     private const string ERROR_MESSAGE_KEY = "ErrorMessage";
+
     public override string Name => "PasswordValidator";
 
     protected override string GetDefaultMessageTemplate(string errorCode)
@@ -16,7 +17,7 @@ public partial class PasswordValidator<T> : PropertyValidator<T, string>
 
     public override bool IsValid(ValidationContext<T> context, string password)
     {
-        if (string.IsNullOrEmpty(password))
+        if (string.IsNullOrWhiteSpace(password))
         {
             context.MessageFormatter.AppendArgument(ERROR_MESSAGE_KEY, ResourceErrorMessages.INVALID_PASSWORD);
             return false;
@@ -28,10 +29,7 @@ public partial class PasswordValidator<T> : PropertyValidator<T, string>
             return false;
         }
 
-        // A - Z = dis que deve ter caracteres maiusculso entre a a a  e z minusculo
-        // + = diz que nao importa a quantidade de a a z
-
-        if(UpperCaseLetter().IsMatch(password) == false)
+        if (UpperCaseLetter().IsMatch(password) == false)
         {
             context.MessageFormatter.AppendArgument(ERROR_MESSAGE_KEY, ResourceErrorMessages.INVALID_PASSWORD);
             return false;
@@ -55,8 +53,11 @@ public partial class PasswordValidator<T> : PropertyValidator<T, string>
             return false;
         }
 
-        return false;
+        return true;
     }
+
+    // A - Z = dis que deve ter caracteres maiusculso entre a a a  e z minusculo
+    // + = diz que nao importa a quantidade de a a z
 
     [GeneratedRegex(@"[A-Z]+")]
     private static partial Regex UpperCaseLetter();
@@ -67,4 +68,3 @@ public partial class PasswordValidator<T> : PropertyValidator<T, string>
     [GeneratedRegex(@"[\!\?\*\.]+")]
     private static partial Regex SpecialSymbols();
 }
- 
