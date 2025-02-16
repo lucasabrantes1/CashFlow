@@ -25,14 +25,14 @@ public class RegisterUserUseCaseTest
     }
 
     private RegisterUserUseCase CreateUseCase()
-    {   
+    {
         var mapper = MapperBuilder.Build();
-        var uniteOfWork = IUniteOfWorkBuilder.Build();
-        var writeRepository = IUserWriteOnlyRepositoryBuilder.Build();
+        var uniteOfWork = UniteOfWorkBuilder.Build();
+        var writeRepository = UserWriteOnlyRepositoryBuilder.Build();
         var passwordEncripter = PasswordEncripterBuilder.Build();
         var tokenGenerator = JwtTokenGeneratorBuilder.Build();
+        var readRepository = new UserReadOnlyRepositoryBuilder().Build();
 
-
-        return new RegisterUserUseCase(mapper, passwordEncripter, null, writeRepository, tokenGenerator, uniteOfWork);
+        return new RegisterUserUseCase(mapper, passwordEncripter, readRepository, writeRepository, tokenGenerator, uniteOfWork);
     }
 }

@@ -2,7 +2,7 @@
 using Moq;
 
 namespace CommonTestUtilities.Repositories;
-public class IUniteOfWorkBuilder
+public class UniteOfWorkBuilder
 {
     public static IUniteOfWork Build()
     {
