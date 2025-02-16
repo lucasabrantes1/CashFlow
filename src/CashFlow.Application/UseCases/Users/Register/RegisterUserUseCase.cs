@@ -70,5 +70,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 
             throw new ErrorOnValidationException(errorMessages);
         }
+
+
     }
 }
