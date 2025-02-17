@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using CashFlow.Infrastructure.Extensions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -84,7 +86,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-await MigrateDatabasE();
+if(builder.Configuration.IsTestEnvironment() == false)
+{
+    await MigrateDatabasE();
+}
 
 app.Run();
 async Task MigrateDatabasE()
