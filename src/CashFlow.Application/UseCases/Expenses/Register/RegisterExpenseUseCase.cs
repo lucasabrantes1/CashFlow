@@ -30,6 +30,7 @@ public class RegisterExpenseUseCase : IRegisterExpenseUseCase
         
         var entity = _mapper.Map<Expense>(request);
 
+
         await _repository.Add(entity);
 
         await _uniteOfWork.Commit(); 
