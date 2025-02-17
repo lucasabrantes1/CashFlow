@@ -10,8 +10,8 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Test")
-            .ConfigureServices(services => {
-
+            .ConfigureServices(services =>
+            {
                 var provider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
 
                 services.AddDbContext<CashFlowDbContext>(config =>
