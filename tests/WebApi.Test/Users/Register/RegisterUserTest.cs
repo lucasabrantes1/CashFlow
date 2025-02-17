@@ -10,7 +10,7 @@ public class RegisterUserTest : IClassFixture<WebApplicationFactory<Program>>
 {
     private const string METHOD = "api/User";
     private readonly HttpClient _httpClient;
-    public RegisterUserTest(WebApplicationFactory<Program> webApplicationFactory)
+    public RegisterUserTest(CustomWebApplicationFactory webApplicationFactory)
     {
         _httpClient = webApplicationFactory.CreateClient();
     }
