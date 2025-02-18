@@ -6,7 +6,7 @@ using CashFlow.Domain.Entities;
 namespace CashFlow.Application.AutoMapper;
 public class AutoMapping : Profile
 {
-    public AutoMapping() 
+    public AutoMapping()
     {
         RequestToEntity();
         EntityToResponse();

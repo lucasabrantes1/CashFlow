@@ -3,10 +3,10 @@ using CashFlow.Communication.Requests;
 using CashFlow.Communication.Responses;
 using CashFlow.Domain.Repositories;
 using CashFlow.Domain.Repositories.User;
-using CashFlow.Domain.Security.Criptography;
+using CashFlow.Domain.Security.Cryptography;
+using CashFlow.Domain.Security.Tokens;
 using CashFlow.Exception;
-using CashFlow.Exception.ExceptionBase;
-using CashFlow.Infrastructure.Security.Token;
+using CashFlow.Exception.ExceptionsBase;
 using FluentValidation.Results;
 
 namespace CashFlow.Application.UseCases.Users.Register;
@@ -16,7 +16,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
     private readonly IPasswordEncripter _passwordEncripter;
     private readonly IUserReadOnlyRepository _userReadOnlyRepository;
     private readonly IUserWriteOnlyRepository _userWriteOnlyRepository;
-    private readonly IUniteOfWork _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IAccessTokenGenerator _tokenGenerator;
 
     public RegisterUserUseCase(
@@ -25,7 +25,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         IUserReadOnlyRepository userReadOnlyRepository,
         IUserWriteOnlyRepository userWriteOnlyRepository,
         IAccessTokenGenerator tokenGenerator,
-        IUniteOfWork unitOfWork)
+        IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
         _passwordEncripter = passwordEncripter;
@@ -59,7 +59,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         var result = new RegisterUserValidator().Validate(request);
 
         var emailExist = await _userReadOnlyRepository.ExistActiveUserWithEmail(request.Email);
-        if (emailExist)
+        if(emailExist)
         {
             result.Errors.Add(new ValidationFailure(string.Empty, ResourceErrorMessages.EMAIL_ALREADY_REGISTERED));
         }
@@ -70,7 +70,5 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 
             throw new ErrorOnValidationException(errorMessages);
         }
-
-
     }
 }

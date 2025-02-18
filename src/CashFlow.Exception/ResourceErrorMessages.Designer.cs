@@ -70,7 +70,7 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This email is already in use.
+        ///   Looks up a localized string similar to This email is already in use..
         /// </summary>
         public static string EMAIL_ALREADY_REGISTERED {
             get {
@@ -79,7 +79,7 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The email cannot be empty.
+        ///   Looks up a localized string similar to The email cannot be empty..
         /// </summary>
         public static string EMAIL_EMPTY {
             get {
@@ -88,7 +88,7 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The email is invalid.
+        ///   Looks up a localized string similar to The email is invalid..
         /// </summary>
         public static string EMAIL_INVALID {
             get {
@@ -97,7 +97,7 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email or password invalid.
+        ///   Looks up a localized string similar to Invalid e-mail and/or password..
         /// </summary>
         public static string EMAIL_OR_PASSWORD_INVALID {
             get {
@@ -124,7 +124,7 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your password must be at least 8 characters long, containing at least one letter, one lowercase letter, one number and one special character (for example, !, ?, *)..
+        ///   Looks up a localized string similar to Your password should be a minimum of 8 characters, containing at least one uppercase letter, one lowercase letter, one number, and one special character (e.g., !, ?, *, .)..
         /// </summary>
         public static string INVALID_PASSWORD {
             get {
@@ -133,7 +133,7 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The name  cannot be empty .
+        ///   Looks up a localized string similar to The name cannot be empty..
         /// </summary>
         public static string NAME_EMPTY {
             get {
@@ -142,7 +142,7 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Payment Type is not valid.
+        ///   Looks up a localized string similar to Payment Type is not valid..
         /// </summary>
         public static string PAYMENT_TYPE_INVALID {
             get {
@@ -160,11 +160,11 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unknow error.
+        ///   Looks up a localized string similar to Unknown error.
         /// </summary>
-        public static string UNKNOW_ERROR {
+        public static string UNKNOWN_ERROR {
             get {
-                return ResourceManager.GetString("UNKNOW_ERROR", resourceCulture);
+                return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
             }
         }
     }

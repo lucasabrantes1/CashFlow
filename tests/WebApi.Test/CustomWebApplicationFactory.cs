@@ -1,4 +1,4 @@
-﻿using CashFlow.Domain.Security.Criptography;
+﻿using CashFlow.Domain.Security.Cryptography;
 using CashFlow.Infrastructure.DataAccess;
 using CommonTestUtilities.Entities;
 using Microsoft.AspNetCore.Hosting;

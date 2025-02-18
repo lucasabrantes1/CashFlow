@@ -5,46 +5,43 @@ using CashFlow.Domain.Entities;
 using CashFlow.Domain.Repositories;
 using CashFlow.Domain.Repositories.Expenses;
 using CashFlow.Domain.Services.LoggedUser;
-using CashFlow.Exception.ExceptionBase;
+using CashFlow.Exception.ExceptionsBase;
 
 namespace CashFlow.Application.UseCases.Expenses.Register;
 public class RegisterExpenseUseCase : IRegisterExpenseUseCase
 {
     private readonly IExpensesWriteOnlyRepository _repository;
-    private readonly IUniteOfWork _uniteOfWork;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly ILoggedUser _loggedUser;
 
     public RegisterExpenseUseCase(
-        IExpensesWriteOnlyRepository repository, 
-        IUniteOfWork uniteOfWork,
+        IExpensesWriteOnlyRepository repository,
+        IUnitOfWork unitOfWork,
         IMapper mapper,
-        ILoggedUser loggedUser
-        )
+        ILoggedUser loggedUser)
     {
         _repository = repository;
-        _uniteOfWork = uniteOfWork;
+        _unitOfWork = unitOfWork;
         _mapper = mapper;
         _loggedUser = loggedUser;
     }
 
     public async Task<ResponseRegisteredExpenseJson> Execute(RequestExpenseJson request)
     {
-        
         Validate(request);
 
         var loggedUser = await _loggedUser.Get();
-        
+
         var expense = _mapper.Map<Expense>(request);
         expense.UserId = loggedUser.Id;
 
         await _repository.Add(expense);
 
-        await _uniteOfWork.Commit(); 
+        await _unitOfWork.Commit();
 
         return _mapper.Map<ResponseRegisteredExpenseJson>(expense);
     }
-
 
     private void Validate(RequestExpenseJson request)
     {

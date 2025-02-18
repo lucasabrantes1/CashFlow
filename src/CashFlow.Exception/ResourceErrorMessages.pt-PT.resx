@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AMOUNT_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
-    <value>O montante deve ser maior que zero</value>
+    <value>O montante deve ser maior que zero.</value>
   </data>
   <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
-    <value>Esse e-mail já está sendo usado</value>
+    <value>Este correio eletrónico já está a ser utilizado.</value>
   </data>
   <data name="EMAIL_EMPTY" xml:space="preserve">
-    <value>O e-mail não pode estar vazio</value>
+    <value>A mensagem de correio eletrónico não pode estar vazia.</value>
   </data>
   <data name="EMAIL_INVALID" xml:space="preserve">
-    <value>o e-mail é inválido</value>
+    <value>O correio eletrónico é inválido.</value>
   </data>
   <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
-    <value>E-mail ou senha inválidos</value>
+    <value>E-mail e/ou palavra-passe inválidos.</value>
   </data>
   <data name="EXPENSES_CANNOT_FOR_THE_FUTURE" xml:space="preserve">
-    <value>As despesas não podem ser para o futuro</value>
+    <value>As despesas não podem ser para o futuro.</value>
   </data>
   <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
-    <value>Despesa não encontrada</value>
+    <value>Despesa não encontrada.</value>
   </data>
   <data name="INVALID_PASSWORD" xml:space="preserve">
-    <value>Sua senha deve ter no mínimo 8 caracteres contendo pelo menos uma letra guardada uma letra minúscula um número e um caractere especial (por exemplo, !, ?, *).</value>
+    <value>A sua palavra-passe deve ter um mínimo de 8 caracteres, contendo pelo menos uma letra maiúscula, uma letra minúscula, um número e um carácter especial (por exemplo, !, ?, *, .).</value>
   </data>
   <data name="NAME_EMPTY" xml:space="preserve">
-    <value>O Nome não pode estar vazio</value>
+    <value>O nome não pode estar vazio.</value>
   </data>
   <data name="PAYMENT_TYPE_INVALID" xml:space="preserve">
     <value>O tipo de pagamento não é valido</value>
   </data>
   <data name="TITLE_REQUIRED" xml:space="preserve">
-    <value>O titulo é obrigatório</value>
+    <value>O título é obrigatório</value>
   </data>
-  <data name="UNKNOW_ERROR" xml:space="preserve">
-    <value>Erro desconhecido</value>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Erro desconhecido.</value>
   </data>
 </root>

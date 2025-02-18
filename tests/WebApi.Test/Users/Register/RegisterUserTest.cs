@@ -6,8 +6,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
-using WebApi.Test.InLineData;
-using Xunit;
+using WebApi.Test.InlineData;
 
 namespace WebApi.Test.Users.Register;
 public class RegisterUserTest : IClassFixture<CustomWebApplicationFactory>
@@ -38,7 +37,6 @@ public class RegisterUserTest : IClassFixture<CustomWebApplicationFactory>
         response.RootElement.GetProperty("token").GetString().Should().NotBeNullOrEmpty();
     }
 
-
     [Theory]
     [ClassData(typeof(CultureInlineDataTest))]
     public async Task Error_Empty_Name(string cultureInfo)
@@ -60,6 +58,6 @@ public class RegisterUserTest : IClassFixture<CustomWebApplicationFactory>
 
         var expectedMessage = ResourceErrorMessages.ResourceManager.GetString("NAME_EMPTY", new CultureInfo(cultureInfo));
 
-        errors.Should().HaveCount(1).And.Contain(errors => errors.GetString()!.Equals(expectedMessage));
+        errors.Should().HaveCount(1).And.Contain(error => error.GetString()!.Equals(expectedMessage));
     }
 }

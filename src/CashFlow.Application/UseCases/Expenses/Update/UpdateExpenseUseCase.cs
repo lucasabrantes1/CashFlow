@@ -4,22 +4,21 @@ using CashFlow.Domain.Repositories;
 using CashFlow.Domain.Repositories.Expenses;
 using CashFlow.Domain.Services.LoggedUser;
 using CashFlow.Exception;
-using CashFlow.Exception.ExceptionBase;
+using CashFlow.Exception.ExceptionsBase;
 
 namespace CashFlow.Application.UseCases.Expenses.Update;
 public class UpdateExpenseUseCase : IUpdateExpenseUseCase
 {
     private readonly IMapper _mapper;
-    private readonly IUniteOfWork _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IExpensesUpdateOnlyRepository _repository;
     private readonly ILoggedUser _loggedUser;
 
     public UpdateExpenseUseCase(
         IMapper mapper,
-        IUniteOfWork unitOfWork,
+        IUnitOfWork unitOfWork,
         IExpensesUpdateOnlyRepository repository,
-        ILoggedUser loggedUser
-        )
+        ILoggedUser loggedUser)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;

@@ -56,15 +56,12 @@ public partial class PasswordValidator<T> : PropertyValidator<T, string>
         return true;
     }
 
-    // A - Z = dis que deve ter caracteres maiusculso entre a a a  e z minusculo
-    // + = diz que nao importa a quantidade de a a z
-
     [GeneratedRegex(@"[A-Z]+")]
     private static partial Regex UpperCaseLetter();
     [GeneratedRegex(@"[a-z]+")]
     private static partial Regex LowerCaseLetter();
     [GeneratedRegex(@"[0-9]+")]
     private static partial Regex Numbers();
-    [GeneratedRegex(@"[\!\?\*\.@#\$%\^&\(\)\-_\+=]+")]
+    [GeneratedRegex(@"[\!\?\*\.]+")]
     private static partial Regex SpecialSymbols();
 }

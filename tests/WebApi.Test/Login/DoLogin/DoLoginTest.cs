@@ -7,8 +7,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
-using WebApi.Test.InLineData;
-using Xunit;
+using WebApi.Test.InlineData;
 
 namespace WebApi.Test.Login.DoLogin;
 public class DoLoginTest : IClassFixture<CustomWebApplicationFactory>

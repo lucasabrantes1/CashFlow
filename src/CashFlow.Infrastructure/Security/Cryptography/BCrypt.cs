@@ -1,4 +1,4 @@
-﻿using CashFlow.Domain.Security.Criptography;
+﻿using CashFlow.Domain.Security.Cryptography;
 using BC = BCrypt.Net.BCrypt;
 
 namespace CashFlow.Infrastructure.Security.Cryptography;

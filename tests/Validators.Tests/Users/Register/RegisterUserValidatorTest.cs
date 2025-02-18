@@ -2,8 +2,6 @@
 using CashFlow.Exception;
 using CommonTestUtilities.Requests;
 using FluentAssertions;
-using Shouldly;
-using Xunit;
 
 namespace Validators.Tests.Users.Register;
 public class RegisterUserValidatorTest
@@ -19,8 +17,7 @@ public class RegisterUserValidatorTest
         var result = validator.Validate(request);
 
         //Assert
-        result.IsValid.ShouldBeTrue();
-        // result.IsValid.Should().BeTrue();
+        result.IsValid.Should().BeTrue();
     }
 
     [Theory]
@@ -35,10 +32,8 @@ public class RegisterUserValidatorTest
 
         var result = validator.Validate(request);
 
-        result.IsValid.ShouldBeFalse();
-        result.Errors.ShouldHaveSingleItem().ErrorMessage.ShouldBe(ResourceErrorMessages.NAME_EMPTY);
-        // result.IsValid.Should().BeFalse();
-        // result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.NAME_EMPTY));
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.NAME_EMPTY));
     }
 
     [Theory]
@@ -53,10 +48,8 @@ public class RegisterUserValidatorTest
 
         var result = validator.Validate(request);
 
-
-        result.IsValid.ShouldBeFalse();
-        result.Errors.ShouldHaveSingleItem().ErrorMessage.ShouldBe(ResourceErrorMessages.EMAIL_EMPTY);
-        // result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.EMAIL_EMPTY));
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.EMAIL_EMPTY));
     }
 
     [Fact]
@@ -64,17 +57,13 @@ public class RegisterUserValidatorTest
     {
         var validator = new RegisterUserValidator();
         var request = RequestRegisterUserJsonBuilder.Build();
-        request.Email = "lucas.com";
+        request.Email = "welisson.com";
 
         var result = validator.Validate(request);
 
-
-        result.IsValid.ShouldBeFalse();
-        result.Errors.ShouldHaveSingleItem().ErrorMessage.ShouldBe(ResourceErrorMessages.EMAIL_INVALID);
-        // result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.EMAIL_EMPTY));
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.EMAIL_INVALID));
     }
-
-
 
     [Fact]
     public void Error_Password_Empty()
@@ -85,10 +74,7 @@ public class RegisterUserValidatorTest
 
         var result = validator.Validate(request);
 
-
-        result.IsValid.ShouldBeFalse();
-        result.Errors.ShouldHaveSingleItem().ErrorMessage.ShouldBe(ResourceErrorMessages.INVALID_PASSWORD);
-        // result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.EMAIL_EMPTY));
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.INVALID_PASSWORD));
     }
-
 }
