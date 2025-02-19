@@ -54,6 +54,8 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         };
     }
 
+
+    //teste
     private async Task Validate(RequestRegisterUserJson request)
     {
         var result = new RegisterUserValidator().Validate(request);
