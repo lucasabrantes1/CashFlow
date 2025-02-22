@@ -27,6 +27,7 @@ public class ReportController : ControllerBase
         return NoContent();
     }
 
+
     [HttpGet("pdf")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
