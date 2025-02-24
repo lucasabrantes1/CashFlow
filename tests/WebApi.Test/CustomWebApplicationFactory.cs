@@ -50,7 +50,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
         Expense_MemberTeam = new ExpenseIdentityManager(expenseTeamMember);
 
         var userAdmin = AddUserAdmin(dbContext, passwordEncripter, accessTokenGenerator);
-        var  expenseAdmin = AddExpenses(dbContext, userAdmin, expenseId: 2);
+        var expenseAdmin = AddExpenses(dbContext, userAdmin, expenseId: 2);
         Expense_Admin = new ExpenseIdentityManager(expenseAdmin);
 
         dbContext.SaveChanges();
@@ -63,8 +63,8 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {
         var user = UserBuilder.Build();
         user.Id = 1;
-        var password = user.Password;
 
+        var password = user.Password;
         user.Password = passwordEncripter.Encrypt(user.Password);
 
         dbContext.Users.Add(user);
@@ -85,7 +85,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
         user.Id = 2;
 
         var password = user.Password;
-
         user.Password = passwordEncripter.Encrypt(user.Password);
 
         dbContext.Users.Add(user);
